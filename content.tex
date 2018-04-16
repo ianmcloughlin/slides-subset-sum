@@ -1,0 +1,70 @@
+\begin{frame}{Subset-sum problem}
+  
+  \begin{alertblock}{Problem}
+    Given a set of integers $S$, is there a non-empty subset whose elements sum to zero?
+  \end{alertblock}
+
+  \vspace{4mm}
+  
+  \begin{exampleblock}{Example}
+    Does $\{ 1, 3, 7, -5, -13, 2, 9, -8 \}$ have such a subset?
+  \end{exampleblock}
+  
+  \vspace{4mm}
+
+  \begin{alertblock}{Note}
+     If somebody suggests a solution, it is very quick to check it.
+    Being able to quickly verify a solution is a characteristic of NP problems.
+  \end{alertblock}
+\end{frame}
+
+
+\begin{frame}{SUBSET-SUM}
+  \redmath{ \{ \langle S,t \rangle \mid S = \{x_1,x_2,\ldots,x_k \} \mid \exists \{ y_i \} \subseteq \{ x_j \} \mid \sum_i y_i = t \}}
+  \begin{description}
+    \item[SUBSETSUM] is a language, as above.
+    \item[Angle brackets] denote encoding their contents as a string over some alphabet.
+    \item[Encoding] can be done in many ways, and Turing machines can be used to translate between different encodings, albeit with a computational cost.
+    \item[$t=0$] gives a subset of SUBSETSUM.
+  \end{description}
+\end{frame}
+
+\begin{frame}{Counting subsets}
+  \redmath{\{a,b,c\}}
+  \begin{adjustbox}{max width={\textwidth}, center}
+    \begin{forest}
+      [{\footnotesize \(\{\}\)}
+        [{\footnotesize \(\{\}\)}
+          [{\footnotesize \(\{\}\)}
+            [{\footnotesize \(\{\}\)}]
+            [{\footnotesize \(\{c\}\)}]
+          ]
+          [{\footnotesize \(\{b\}\)}
+            [{\footnotesize \(\{b\}\)}]
+            [{\footnotesize \(\{b,c\}\)}]
+          ]
+        ]
+        [{\footnotesize \(\{a\}\)}
+          [{\footnotesize \(\{a\}\)}
+            [{\footnotesize \(\{a\}\)}]
+            [{\footnotesize \(\{a,c\}\)}]
+          ]
+          [{\footnotesize \(\{a,b\}\)}
+            [{\footnotesize \(\{a,b\}\)}]
+            [{\footnotesize \(\{a,b,c\}\)}]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{adjustbox}
+\end{frame}
+
+\begin{frame}{SUBSETSUM and NP}
+  \begin{description}
+    \item[$2^n$] is the number of subsets. Exponential.
+    \item[Note] that $2^n$ is also the number of settings of $n$ Boolean variables.
+    \item[Correspondence] can be seen in terms of $0$'s and $1$'s. In SUBSET-SUM the elements from the set that are included in a given subset are represented by $1$'s.
+    \item[SUBSET-SUM] is NP-complete.
+    \item[Usual] proof that SUBSET-SUM is NP-complete is done by reduction to 3-SAT.
+  \end{description}
+\end{frame}
